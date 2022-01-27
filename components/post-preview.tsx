@@ -11,7 +11,7 @@ type Props = {
 export default function PostPreview({ title, slug, date }: Props) {
   const router = useRouter();
   const deletePost = async (slug: string) => {
-    const res = await fetch("/api/post/delete", {
+    await fetch("/api/post/delete", {
       body: JSON.stringify({ slug }),
       headers: { "Content-Type": "application/json" },
       method: "POST"
