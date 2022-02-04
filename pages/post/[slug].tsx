@@ -1,6 +1,6 @@
 import Layout from "components/layout";
 import Container from "components/container";
-import { getAllPosts, getPostBySlug } from "lib/getPosts";
+import { getPostBySlug } from "lib/getPosts";
 import Head from "next/head";
 import { ReactElement } from "react";
 import { useRouter } from "next/router";
@@ -32,7 +32,7 @@ export default function Post(post: IPost): ReactElement {
   )
 }
 
-export async function getStaticProps({ params }: any) {
+export async function getServerSideProps({ params }: any) {
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
@@ -45,17 +45,17 @@ export async function getStaticProps({ params }: any) {
   }
 }
 
-export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'])
+// export async function getStaticPaths() {
+//   const posts = getAllPosts(['slug'])
 
-  return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      }
-    }),
-    fallback: false,
-  }
-}
+//   return {
+//     paths: posts.map((post) => {
+//       return {
+//         params: {
+//           slug: post.slug,
+//         },
+//       }
+//     }),
+//     fallback: false,
+//   }
+// }

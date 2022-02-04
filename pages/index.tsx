@@ -24,7 +24,7 @@ export default function Home({ posts }: Props): ReactElement {
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const posts = getAllPosts([
     "title",
     "date",
