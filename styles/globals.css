@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body, html, p, h1, h2 {
+  font-family: 'Roboto', sans-serif, -apple-system, "Segoe UI", Ubuntu;
+}
+
 p {
   margin-top: 10px;
 }
@@ -23,4 +27,16 @@ blockquote:before {
 }
 blockquote p {
   margin-top: 5px;
+}
+
+.Posts>*:first-child {
+  background: rgb(239, 239, 255);
+}
+
+.Posts>*:first-child h2 {
+  font-size: 1.225rem;
+}
+
+.Posts>*:first-child:hover {
+  background: rgb(234, 234, 255);
 }

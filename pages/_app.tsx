@@ -1,5 +1,6 @@
 import { AppProps } from "next/dist/shared/lib/router/router";
 import { ReactElement } from "react";
+import "@fontsource/roboto";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps): ReactElement {

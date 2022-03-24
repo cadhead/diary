@@ -6,7 +6,7 @@ type Props = {
 
 export default function Posts({ posts }: Props) {
   return (
-    <div className="">
+    <div className="Posts">
       {posts.map((post) => (
         <PostPreview
           key={post.slug}
