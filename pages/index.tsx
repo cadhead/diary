@@ -28,7 +28,8 @@ export const getServerSideProps = async () => {
   const posts = getAllPosts([
     "title",
     "date",
-    "slug"
+    "slug",
+    "category"
   ])
 
   return {

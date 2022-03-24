@@ -5,10 +5,11 @@ import { useRouter } from "next/router";
 type Props = {
   title: string,
   slug: string,
-  date: number
+  date: number,
+  category: string
 }
 
-export default function PostPreview({ title, slug, date }: Props) {
+export default function PostPreview({ title, slug, date, category }: Props) {
   const router = useRouter();
   const deletePost = async (slug: string) => {
     await fetch("/api/post/delete", {
@@ -25,7 +26,7 @@ export default function PostPreview({ title, slug, date }: Props) {
         <h2 className="text-lg hover:text-violet-600">
           {title}
         </h2>
-        <small>{formatedDate(date)}</small>
+        <div><small>{formatedDate(date)}</small> <span className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-white bg-gray-300 rounded-full">{category || "No category"}</span></div>
         <button onClick={deletePost.bind(null, slug)} title="Delete post" className="absolute right-px top-px hover:opacity-50" name="postDelete">✖</button>
       </a>
     </Link>

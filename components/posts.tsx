@@ -13,6 +13,7 @@ export default function Posts({ posts }: Props) {
           title={post.title}
           date={post.date}
           slug={post.slug}
+          category={post.category}
         />
       ))}
     </div>
