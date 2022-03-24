@@ -1,18 +1,24 @@
+import CategorySelect from "components/category-select";
 import Container from "components/container";
 import Layout from "components/layout";
 import Modal from "components/modal";
 import Nav from "components/nav";
+import getPostsCategories from "lib/getPostsCategories";
 import { createMarkUp } from "lib/mdRenderer";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, ReactElement, useEffect, useState } from "react";
 
-export default function NewPost() {
+type Props = {
+  categories: string[]
+}
+
+export default function NewPost({ categories }: Props): ReactElement {
   const router = useRouter();
   const [state, setState] = useState({
     title: "",
     content: "",
-    showPreview: false
+    category: undefined
   });
   const [error, setError] = useState("");
   const [modalState, setModelState] = useState(false);
@@ -21,7 +27,8 @@ export default function NewPost() {
     const cache = localStorage.getItem("postCache");
     const initialValue = cache ? JSON.parse(cache) : {
       title: "",
-      content: ""
+      content: "",
+      category: undefined
     };
 
     setState(initialValue);
@@ -38,9 +45,10 @@ export default function NewPost() {
 
     const title: string = state.title;
     const content: string = state.content;
+    const category: string | undefined = state.category;
 
     const res = await fetch("/api/post/create", {
-      body: JSON.stringify({ title, content }),
+      body: JSON.stringify({ title, content, category }),
       headers: { "Content-Type": "application/json" },
       method: "POST"
     });
@@ -73,6 +81,7 @@ export default function NewPost() {
         <Nav />
         {error ? <div className="text-red-400">{error}</div> : null}
         <form className="h-screen" onSubmit={postCreate}>
+          <CategorySelect categories={categories} onFieldChange={onFieldChange} />
           <input value={state.title} onChange={onFieldChange} type="text" name="title" placeholder="Title" className="block w-2/3 h-16 px-4 py-3 mt-8 mb-3 border rounded appearance-none bg-grey-lighter text-grey-darker" />
           <textarea value={state.content} onChange={onFieldChange} name="content" placeholder="Write smth" className="block w-full px-4 py-3 mt-8 mb-3 border rounded appearance-none h-3/6 bg-grey-lighter text-grey-darker border-grey-lighter"></textarea>
           <button className="px-4 py-2 mt-5 mb-5 font-bold text-white bg-indigo-900 rounded shadow hover:bg-indigo-800" type="submit">Create new post</button>
@@ -81,4 +90,12 @@ export default function NewPost() {
       </Container>
     </Layout>
   );
+}
+
+export const getStaticProps = async () => {
+  const categories = getPostsCategories();
+
+  return {
+    props: { categories }
+  }
 }

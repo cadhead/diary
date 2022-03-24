@@ -4,11 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { join } from "path";
 
 function getTemplate(post: IPost): string {
-  const { title, content, date } = post;
+  const { title, content, date, category } = post;
 
   const template = `---\
   \ntitle: ${title}\
   \ndate: ${date}\
+  \ncategory: ${category}
   \n---\
   \n\n${content}`
 
