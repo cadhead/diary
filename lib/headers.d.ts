@@ -2,7 +2,8 @@ interface IPost {
   title: string,
   content: string,
   date: number,
-  slug: string
+  slug: string,
+  category: string
 }
 
 interface ICreatedPostPayload {
