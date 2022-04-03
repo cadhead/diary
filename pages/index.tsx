@@ -38,15 +38,15 @@ export default function Home({ posts }: Props): ReactElement {
         <Nav />
         {posts.length ? <Posts posts={currentPosts} /> : "No posts, yet."}
         <ReactPaginate
-          className="flex justify-center mt-5"
-          breakLabel={<DotsHorizontalIcon className="w-5 h-5 m-2 mt-2" />}
-          nextLabel={<ArrowCircleRightIcon className="w-5 h-5 m-2 mt-2" />}
+          className="flex justify-center mt-5 bg-gray-100/[0.9]"
+          breakLabel={<DotsHorizontalIcon className="w-4 h-4 m-2 mt-3 text-red-400" />}
+          nextLabel={<ArrowCircleRightIcon className="w-4 h-4 m-2 mt-3 text-red-400" />}
           onPageChange={handlePageClick}
           pageRangeDisplayed={4}
           pageCount={pageCount}
-          previousLabel={<ArrowCircleLeftIcon className="w-5 h-5 m-2 mt-2" />}
+          previousLabel={<ArrowCircleLeftIcon className="w-4 h-4 m-2 mt-3 text-red-400" />}
           pageLinkClassName="block m-2 px-2 bg-gray-200 rounded hover:bg-gray-100"
-          activeLinkClassName="text-indigo-600"
+          activeLinkClassName="text-red-600"
         />
       </Container>
     </Layout>

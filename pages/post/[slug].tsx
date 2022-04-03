@@ -22,11 +22,13 @@ export default function Post(post: IPost): ReactElement {
       </Head>
       <Container>
         <Nav />
-        <h1 className="text-xl font-bold">
-          {post.title}
-        </h1>
-        <small>{formatedDate(post.date)}</small>
-        <article className="py-2 mt-2 border-t" dangerouslySetInnerHTML={createMarkUp(post.content)} />
+        <div className="p-2 bg-white">
+          <h1 className="text-xl font-bold">
+            {post.title}
+          </h1>
+          <small>{formatedDate(post.date)}</small>
+        </div>
+        <article className="p-2 pt-0 bg-white border-t border-red-100" dangerouslySetInnerHTML={createMarkUp(post.content)} />
       </Container>
     </Layout>
   )
