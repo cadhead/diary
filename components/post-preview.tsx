@@ -1,7 +1,6 @@
 import formatedDate from "lib/formatedDate";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { XIcon } from "@heroicons/react/solid";
 import PostControlls from "./post-controlls";
 
 type Props = {
