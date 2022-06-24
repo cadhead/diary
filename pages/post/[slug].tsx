@@ -25,7 +25,7 @@ export default function Post(post: IPost): ReactElement {
         <div className="p-2 bg-white">
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-bold">
-              {post.title} {console.log(post)}
+              {post.title}
             </h1>
             { post.category ?
               <span className="inline-flex items-center justify-center px-2 py-1 ml-2 text-xs font-bold leading-none text-white bg-gray-400 rounded-full">

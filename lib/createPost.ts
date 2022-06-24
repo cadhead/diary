@@ -9,6 +9,7 @@ function getTemplate(post: IPost): string {
   const template = `---\
   \ntitle: ${title}\
   \ndate: ${date}\
+  \neditAt: ${post.editAt}\
   \ncategory: ${category}
   \n---\
   \n\n${content}`

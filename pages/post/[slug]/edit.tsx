@@ -39,6 +39,11 @@ export default function EditPost({ post, categories }: Props): ReactElement {
     event.preventDefault();
 
     const { title, content, category } = state;
+    const { title: oldTitle, content: oldContent, category: oldCategory } = post;
+
+    if (oldTitle === title && oldContent === content && oldCategory === category) {
+      return router.push(`/post/${post.slug}`);
+    }
 
     const res = await fetch("/api/post/edit", {
       body: JSON.stringify({ slug: post.slug, title, content, category, date: post.date }),
