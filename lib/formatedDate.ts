@@ -1,7 +1,10 @@
 import dateFormat, { masks } from "dateformat";
 
-masks.postedByDate = `"Posted by " dd/mm/yyyy, HH:MM:ss`;
+const format = 'dd/mm/yyyy, HH:MM:ss';
 
-export default function formatedDate(date?: number) {
-  return dateFormat(date, "postedByDate");
+masks.postedByDate = `"Posted at " ${format}`;
+masks.editAt = `"Last edit at " ${format}`
+
+export default function formatedDate(date?: number, mask = "postedByDate") {
+  return dateFormat(date, mask);
 }

@@ -37,6 +37,9 @@ export default function Post(post: IPost): ReactElement {
           <small>{formatedDate(post.date)}</small>
         </div>
         <article className="p-2 pt-0 bg-white border-t border-red-100" dangerouslySetInnerHTML={createMarkUp(post.content)} />
+        <div className="p-2 bg-white border-t border-red-100">
+          <small>{post.editAt ? formatedDate(post.editAt, "editAt") : ""}</small>
+        </div>
       </Container>
     </Layout>
   )
@@ -46,6 +49,7 @@ export async function getServerSideProps({ params }: any) {
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
+    'editAt',
     'slug',
     'content',
     'category'
