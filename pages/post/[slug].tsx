@@ -23,9 +23,17 @@ export default function Post(post: IPost): ReactElement {
       <Container>
         <Nav />
         <div className="p-2 bg-white">
-          <h1 className="text-xl font-bold">
-            {post.title}
-          </h1>
+          <div className="flex items-center justify-between">
+            <h1 className="text-xl font-bold">
+              {post.title} {console.log(post)}
+            </h1>
+            { post.category ?
+              <span className="inline-flex items-center justify-center px-2 py-1 ml-2 text-xs font-bold leading-none text-white bg-gray-400 rounded-full">
+                {post.category}
+              </span>
+              : null
+            }
+          </div>
           <small>{formatedDate(post.date)}</small>
         </div>
         <article className="p-2 pt-0 bg-white border-t border-red-100" dangerouslySetInnerHTML={createMarkUp(post.content)} />
@@ -39,7 +47,8 @@ export async function getServerSideProps({ params }: any) {
     'title',
     'date',
     'slug',
-    'content'
+    'content',
+    'category'
   ]);
 
   return {

@@ -1,5 +1,5 @@
 import { getPostBySlug } from "lib/getPosts";
-import { FormEvent, ReactElement, useEffect, useState } from "react";
+import { FormEvent, ReactElement, useState } from "react";
 import ErrorPage from "next/error"
 import { useRouter } from "next/router";
 import Modal from "components/modal";
@@ -73,7 +73,7 @@ export default function EditPost({ post, categories }: Props): ReactElement {
         <Nav />
         {error ? <div className="text-red-400">{error}</div> : null}
         <form className="h-screen" onSubmit={postEdit}>
-          <CategorySelect categories={categories} onFieldChange={onFieldChange} />
+          <CategorySelect selected={post.category} categories={categories} onFieldChange={onFieldChange} />
           <input value={state.title} onChange={onFieldChange} type="text" name="title" placeholder="Title" className="block w-2/3 h-16 px-4 py-3 mt-8 mb-3 border rounded appearance-none bg-grey-lighter text-grey-darker" />
           <textarea value={state.content.trim()} onChange={onFieldChange} name="content" placeholder="Write smth" className="block w-full px-4 py-3 mt-8 mb-3 border rounded appearance-none h-3/6 bg-grey-lighter text-grey-darker border-grey-lighter"></textarea>
           <button className="px-4 py-2 mt-5 mb-5 font-bold text-white bg-indigo-900 rounded shadow hover:bg-indigo-800" type="submit">Save post</button>
