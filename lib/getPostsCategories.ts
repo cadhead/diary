@@ -1,6 +1,7 @@
 export default function getPostsCategories() {
   return [
     "Life",
-    "Dream"
+    "Dream",
+    "Poetry"
   ]
 }

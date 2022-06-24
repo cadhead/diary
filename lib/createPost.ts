@@ -22,7 +22,7 @@ function generateID(): string {
 
 function generateMDFile(post: IPost): Promise<any> {
   const template = getTemplate(post);
-  const id = generateID()
+  const id = post.slug || generateID()
   const mdFileName = join(POST_DIR_PATH, `${id}.md`);
 
   return new Promise(async (resolve, reject) => {

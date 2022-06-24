@@ -23,7 +23,9 @@ export default function PostPreview({ title, slug, date, category }: Props) {
     router.reload();
   }
 
-  
+  const editPost = () => {
+    router.push(`/post/${slug}/edit`)
+  }
 
   return (
     <div className="block px-2 py-2 bg-white/[0.9] border-b border-red-300 hover:bg-slate-50/[0.9] hover:border-red-400 backdrop-blur-sm">
@@ -40,7 +42,7 @@ export default function PostPreview({ title, slug, date, category }: Props) {
         </span>
         : null
       }
-      <PostControlls deleteFunc={deletePost} />
+      <PostControlls deleteFunc={deletePost} editFunc={editPost} />
       <div>
         <small>{formatedDate(date)}</small>
       </div>

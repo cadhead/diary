@@ -1,9 +1,10 @@
 interface IPost {
   title: string,
   content: string,
-  date: number,
+  date?: number,
   slug: string,
-  category: string
+  category: string,
+  editAt?: number
 }
 
 interface ICreatedPostPayload {
