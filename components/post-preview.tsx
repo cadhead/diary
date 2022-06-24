@@ -6,7 +6,7 @@ import PostControlls from "./post-controlls";
 type Props = {
   title: string,
   slug: string,
-  date: number,
+  date?: number,
   category: string
 }
 
