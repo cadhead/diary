@@ -13,7 +13,7 @@ type Props = {
 export default function PostPreview({ title, slug, date, category }: Props) {
   const router = useRouter();
 
-  const deletePost = async (slug: string) => {
+  const deletePost = async () => {
     await fetch("/api/post/delete", {
       body: JSON.stringify({ slug }),
       headers: { "Content-Type": "application/json" },
